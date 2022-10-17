@@ -1,2 +1,10 @@
 $primary-color: #272727;
-$secondary-color: #920dff;
+$secondary-color: #ff652f;
+
+@function set-text-color($color) {
+  @if (lightness($color) > 40%) {
+    @return #000000;
+  } @else {
+    @return #ffffff;
+  }
+}

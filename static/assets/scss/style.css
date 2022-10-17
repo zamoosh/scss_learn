@@ -12,13 +12,111 @@
   overflow: hidden;
   align-items: center;
   text-align: center;
-  background: linear-gradient(to right, rgba(39, 39, 39, 0.9), rgba(39, 39, 39, 0.3)), linear-gradient(to left bottom, rgba(146, 13, 255, 0.5), rgba(0, 225, 255, 0.3)), url("../images/Hekapoo.png") center top;
+  background: linear-gradient(to right, rgba(39, 39, 39, 0.9), rgba(39, 39, 39, 0.3)), url("../images/model-1.jpg") center top;
   background-size: cover;
+}
+.home__name {
+  font-size: 5rem;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ffffff;
+}
+.home__name--last {
+  color: #ff652f;
+  font-weight: 700;
+}
+
+.menu-btn {
+  position: absolute;
+  z-index: 2;
+  right: 1rem;
+  top: 1rem;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+.menu-btn__burger, .menu-btn__burger::after, .menu-btn__burger::before {
+  position: absolute;
+  top: 0.5rem;
+  right: 0;
+  height: 2px;
+  width: 100%;
+  background: #ffffff;
+  transition: all 200ms ease-in-out;
+}
+.menu-btn__burger::before {
+  content: "";
+  top: -7px;
+}
+.menu-btn__burger::after {
+  content: "";
+  left: 0;
+  top: 7px;
+}
+.menu-btn__burger.open, .open.menu-btn__burger::before, .open.menu-btn__burger::after {
+  transform: rotate(90deg);
+  background: transparent;
+}
+.menu-btn__burger.open::before {
+  transform: rotate(45deg) translate(3px, 7px);
+  background: #ffffff;
+}
+.menu-btn__burger.open::after {
+  transform: rotate(-45deg) translate(3px, -7px);
+  background: #ffffff;
+}
+
+.nav {
+  opacity: 0.95;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 0;
+  visibility: hidden;
+}
+.nav.open {
+  visibility: visible;
+}
+.nav .menu-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  background: #272727;
+  list-style: none;
+  padding-right: 1rem;
+  transform: translateY(-100%);
+  transition: all 500ms ease-in-out;
+}
+.nav .menu-nav.open {
+  transform: translateY(0);
+}
+.nav .menu-nav__item {
+  padding: 1rem 0;
+  transform: translateX(100vw);
+  text-transform: uppercase;
+  transition: all 500ms ease-in-out;
+}
+.nav .menu-nav__item.open {
+  transform: translateX(0);
+}
+.nav .menu-nav__link {
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: 200;
+  transition: all 200ms ease-in-out;
+}
+.nav .menu-nav__link:hover {
+  color: #ff652f;
 }
 
 body {
   background-color: #272727;
-  color: white;
+  color: #ffffff;
   font-family: "Segoe UI", sans-serif;
   line-height: 1;
   height: 100vh;
@@ -30,7 +128,7 @@ h1, h2, h3 {
 
 a {
   text-decoration: none;
-  color: white;
+  color: #ffffff;
 }
 
 header {
@@ -51,16 +149,16 @@ main .social-icons {
 }
 main .social-icons > * {
   visibility: visible;
-  transition: opacity 200ms;
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: all 200ms ease-in-out;
 }
 main .social-icons:hover > :not(:hover) {
   opacity: 0.5;
+  filter: blur(1px);
 }
-main a {
-  margin-right: 0.4rem;
-}
-main a:hover {
-  color: #920dff;
+main .social-icons:hover > :hover {
+  color: #ff652f;
 }
 
 footer {
@@ -70,10 +168,10 @@ footer {
   right: 1rem;
   text-align: right;
   padding: 1rem;
-  color: white;
+  color: #ffffff;
 }
 footer:hover {
-  color: #920dff;
+  color: #ff652f;
 }
 
 /*# sourceMappingURL=style.css.map */

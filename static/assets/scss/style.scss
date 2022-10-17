@@ -1,6 +1,9 @@
 @import "./presets";
 @import "./colors";
+@import "./transition";
 @import "./home";
+@import "./menu";
+
 
 @mixin center-div {
   display: flex;
@@ -10,7 +13,7 @@
 
 body {
   background-color: $primary-color;
-  color: white;
+  color: set-text-color($primary-color);
   font-family: "Segoe UI", sans-serif;
   line-height: 1;
   height: 100vh;
@@ -23,7 +26,7 @@ h1, h2, h3 {
 
 a {
   text-decoration: none;
-  color: white;
+  color: set-text-color($primary-color);
 }
 
 header {
@@ -37,6 +40,7 @@ main {
   width: 100%;
 
 
+  // sibling fade in social icons
   .social-icons {
     position: fixed;
     bottom: 1rem;
@@ -45,18 +49,17 @@ main {
 
     & > * {
       visibility: visible;
-      transition: opacity 200ms;
+      display: inline-block;
+      margin-right: 0.5rem;
+      @include transition-ease-200;
     }
 
     &:hover > :not(:hover) {
       opacity: 0.5;
+      filter: blur(1px);
     }
-  }
 
-  a {
-    margin-right: 0.4rem;
-
-    &:hover {
+    &:hover > :hover {
       color: $secondary-color;
     }
   }
@@ -69,7 +72,7 @@ footer {
   right: 1rem;
   text-align: right;
   padding: 1rem;
-  color: white;
+  color: set-text-color($primary-color);
 
   &:hover {
     color: $secondary-color;
