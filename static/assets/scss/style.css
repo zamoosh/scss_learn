@@ -36,6 +36,11 @@
   cursor: pointer;
   transition: all 200ms ease-in-out;
 }
+@media (min-width: 768px) and (max-width: 2280px) {
+  .menu-btn {
+    display: none;
+  }
+}
 .menu-btn__burger, .menu-btn__burger::after, .menu-btn__burger::before {
   position: absolute;
   top: 0.5rem;
@@ -69,49 +74,157 @@
 
 .nav {
   opacity: 0.95;
+  /*opacity: 0.95;
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 0;
   visibility: hidden;
-}
-.nav.open {
-  visibility: visible;
+
+  &.open {
+    visibility: visible;
+  }
+
+  .menu-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    background: $primary-color;
+    list-style: none;
+    padding-right: 1rem;
+    transform: translateY(-100%);
+    @include transition-ease-500;
+
+    &.open {
+      transform: translateY(0);
+    }
+
+    &__item {
+      padding: 1rem 0;
+      transform: translateX(100vw);
+      text-transform: uppercase;
+      @include transition-ease-500;
+
+      &.open {
+        transform: translateX(0);
+      }
+    }
+
+    &__link {
+      color: set-text-color($primary-color);
+      font-size: 2.5rem;
+      font-weight: 200;
+      @include transition-ease-200;
+    }
+
+    &__link:hover {
+      color: $secondary-color;
+    }
+  }*/
 }
 .nav .menu-nav {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  overflow: hidden;
-  background: #272727;
-  list-style: none;
-  padding-right: 1rem;
-  transform: translateY(-100%);
-  transition: all 500ms ease-in-out;
-}
-.nav .menu-nav.open {
-  transform: translateY(0);
+  flex-direction: row;
+  justify-content: end;
 }
 .nav .menu-nav__item {
-  padding: 1rem 0;
-  transform: translateX(100vw);
-  text-transform: uppercase;
-  transition: all 500ms ease-in-out;
-}
-.nav .menu-nav__item.open {
-  transform: translateX(0);
-}
-.nav .menu-nav__link {
-  color: #ffffff;
-  font-size: 2.5rem;
+  list-style: none;
+  padding: 2rem 1rem;
   font-weight: 200;
-  transition: all 200ms ease-in-out;
+  font-size: 1.5rem;
+  text-transform: uppercase;
 }
-.nav .menu-nav__link:hover {
-  color: #ff652f;
+@media (max-width: 768px) {
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 0;
+    visibility: hidden;
+  }
+  .nav.open {
+    visibility: visible;
+  }
+  .nav .menu-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    background: #272727;
+    list-style: none;
+    padding-right: 1rem;
+    transform: translateY(-100%);
+    transition: all 500ms ease-in-out;
+  }
+  .nav .menu-nav.open {
+    transform: translateY(0);
+  }
+  .nav .menu-nav.open > :hover {
+    filter: none;
+    opacity: 1;
+    color: #ff652f;
+  }
+  .nav .menu-nav.open > :not(:hover):is(.active) {
+    filter: none;
+    opacity: 1;
+  }
+  .nav .menu-nav.open > :not(:hover):is(.active) > a {
+    color: #ff652f;
+  }
+  .nav .menu-nav.open > :not(:hover) {
+    opacity: 0.5;
+    filter: blur(1px);
+  }
+  .nav .menu-nav.open > :not(:hover) > a {
+    color: white;
+  }
+  .nav .menu-nav__item {
+    padding: 1rem 0;
+    transform: translateX(100vw);
+    text-transform: uppercase;
+    transition: all 500ms ease-in-out;
+  }
+  .nav .menu-nav__item.open {
+    transform: translateX(0);
+  }
+  .nav .menu-nav__link {
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: 200;
+    transition: all 200ms ease-in-out;
+  }
+  .nav .menu-nav__link:hover {
+    color: #ff652f;
+  }
+}
+@media (min-width: 768px) and (max-width: 2280px) {
+  .nav .menu-nav {
+    padding-right: 1rem;
+  }
+  .nav .menu-nav__item {
+    transition: all 200ms ease-in-out;
+  }
+  .nav .menu-nav__item.active > a {
+    color: #ff652f;
+  }
+  .nav .menu-nav__item:not(.active) {
+    opacity: 0.7;
+    filter: blur(1px);
+  }
+  .nav .menu-nav__item:hover {
+    opacity: 1;
+    filter: none;
+  }
+  .nav .menu-nav__item:hover > a {
+    color: #ff652f;
+  }
 }
 
 body {

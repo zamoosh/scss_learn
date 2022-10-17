@@ -1,7 +1,13 @@
 @import "./transition";
 @import "./colors";
+@import "./break-points";
 
 .menu-btn {
+
+  @include laptop {
+    display: none;
+  }
+
   position: absolute;
   z-index: 2;
   right: 1rem;
@@ -52,6 +58,132 @@
 
 .nav {
   opacity: 0.95;
+
+  .menu-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+
+    &__item {
+      list-style: none;
+      padding: 2rem 1rem;
+      font-weight: 200;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+  }
+
+
+  @include tablet {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 0;
+    visibility: hidden;
+
+    &.open {
+      visibility: visible;
+    }
+
+    .menu-nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      background: $primary-color;
+      list-style: none;
+      padding-right: 1rem;
+      transform: translateY(-100%);
+      @include transition-ease-500;
+
+      &.open {
+        transform: translateY(0);
+
+        & > :hover {
+          filter: none;
+          opacity: 1;
+          color: $secondary-color;
+        }
+
+        & > :not(:hover):is(.active) {
+          filter: none;
+          opacity: 1;
+
+          & > a {
+            color: $secondary-color;
+          }
+        }
+
+        & > :not(:hover) {
+          opacity: 0.5;
+          filter: blur(1px);
+
+          & > a {
+            color: white;
+          }
+        }
+      }
+
+      &__item {
+        padding: 1rem 0;
+        transform: translateX(100vw);
+        text-transform: uppercase;
+        @include transition-ease-500;
+
+        &.open {
+          transform: translateX(0);
+        }
+
+        //&.active > a {
+        //  color: $secondary-color;
+        //}
+      }
+
+      &__link {
+        color: set-text-color($primary-color);
+        font-size: 2.5rem;
+        font-weight: 200;
+        @include transition-ease-200;
+
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+
+  @include laptop {
+    .menu-nav {
+      padding-right: 1rem;
+
+      &__item {
+        @include transition-ease-200;
+      }
+
+      &__item.active > a {
+        color: $secondary-color;
+      }
+
+      &__item:not(.active) {
+        opacity: 0.7;
+        filter: blur(1px);
+      }
+
+      &__item:hover {
+        opacity: 1;
+        filter: none;
+
+        & > a {
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+
+  /*opacity: 0.95;
   position: fixed;
   top: 0;
   left: 0;
@@ -101,5 +233,5 @@
     &__link:hover {
       color: $secondary-color;
     }
-  }
+  }*/
 }
