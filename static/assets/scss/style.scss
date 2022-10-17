@@ -1,3 +1,77 @@
+@import "./presets";
+@import "./colors";
+@import "./home";
+
+@mixin center-div {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
 body {
-  color: black;
+  background-color: $primary-color;
+  color: white;
+  font-family: "Segoe UI", sans-serif;
+  line-height: 1;
+  height: 100vh;
+  //background-image: url("../images/1218.jpg");
+}
+
+h1, h2, h3 {
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+
+
+  .social-icons {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    visibility: hidden;
+
+    & > * {
+      visibility: visible;
+      transition: opacity 200ms;
+    }
+
+    &:hover > :not(:hover) {
+      opacity: 0.5;
+    }
+  }
+
+  a {
+    margin-right: 0.4rem;
+
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+}
+
+footer {
+  font-size: 1rem;
+  position: fixed;
+  bottom: 0.4rem;
+  right: 1rem;
+  text-align: right;
+  padding: 1rem;
+  color: white;
+
+  &:hover {
+    color: $secondary-color;
+  }
 }

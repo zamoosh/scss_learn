@@ -1,5 +1,79 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.home {
+  height: 100%;
+  padding-top: 40vh;
+  overflow: hidden;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(to right, rgba(39, 39, 39, 0.9), rgba(39, 39, 39, 0.3)), linear-gradient(to left bottom, rgba(146, 13, 255, 0.5), rgba(0, 225, 255, 0.3)), url("../images/Hekapoo.png") center top;
+  background-size: cover;
+}
+
 body {
-  color: red;
+  background-color: #272727;
+  color: white;
+  font-family: "Segoe UI", sans-serif;
+  line-height: 1;
+  height: 100vh;
+}
+
+h1, h2, h3 {
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+}
+main .social-icons {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  visibility: hidden;
+}
+main .social-icons > * {
+  visibility: visible;
+  transition: opacity 200ms;
+}
+main .social-icons:hover > :not(:hover) {
+  opacity: 0.5;
+}
+main a {
+  margin-right: 0.4rem;
+}
+main a:hover {
+  color: #920dff;
+}
+
+footer {
+  font-size: 1rem;
+  position: fixed;
+  bottom: 0.4rem;
+  right: 1rem;
+  text-align: right;
+  padding: 1rem;
+  color: white;
+}
+footer:hover {
+  color: #920dff;
 }
 
 /*# sourceMappingURL=style.css.map */
